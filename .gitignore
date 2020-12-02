@@ -1,0 +1,13 @@
+**/.DS_Store
+**/__pycache__
+.idea/*
+**/.local
+venv
+.cache
+.pki
+.nano/*
+.bash_history
+**/function.zip
+.fontconfig/*
+**/log
+.python-version
