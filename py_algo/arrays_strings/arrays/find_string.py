@@ -51,7 +51,7 @@ for _ in range(inp_len):
 
     for i in range(n):
         for c in input():
-            temp[i][ord(c) - ord('a')] += 1  # This will give a number between 0 and 25
+            temp[i][ord(c) - ord('a')] += 1  # This will give a number between 0 and 25.
 
     needed_str = input()
     count = 0

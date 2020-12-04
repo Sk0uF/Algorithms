@@ -41,7 +41,7 @@ def find_forest(forest, i, j, inp_len):
         count += 1
         forest[i][j] = "W"
 
-        # Move in four different directions and count the trees
+        # Move in four different directions and count the trees.
         count += find_forest(forest, i - 1, j, inp_len)
         count += find_forest(forest, i + 1, j, inp_len)
         count += find_forest(forest, i, j - 1, inp_len)
@@ -58,7 +58,7 @@ for _ in range(inp_len):
 
 count = 0
 
-# Find the forest for every index of the array
+# Find the forest for every index of the array.
 for i in range(inp_len):
     for j in range(inp_len):
         count = max(count, find_forest(forest, i, j, inp_len))

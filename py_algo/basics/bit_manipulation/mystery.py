@@ -36,7 +36,6 @@ The while statement in insignificant.
 Final complexity: O(N)
 """
 
-
 from sys import stdin, stdout
 
 temp_inputs = {}

@@ -27,5 +27,5 @@ inp_len = int(input())
 
 for _ in range(inp_len):
     s = input()
-    # The general case is a[begin:end:step]
+    # The general case is a[begin:end:step].
     print(s[::-1])

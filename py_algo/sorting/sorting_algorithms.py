@@ -62,14 +62,14 @@ def merge_sort(array):
 
         # Each time, we compare the first elements of each array, for example
         # if left = [3, 6, 11] and right = [4, 5, 10] we compare 3 with 4,
-        # 3 is smaller so the array becomes [3] and we pop the 3 from left
+        # 3 is smaller so the array becomes [3] and we pop the 3 from left.
         # Now, left becomes [6, 11], we compare 6 with 4 and the array becomes
-        # [3, 4] and we pop the 4 from right, so right becomes [5, 10]. The
+        # [3, 4] and we pop the 4 from right, so right becomes [5, 10].
         # The same procedure continues and array finally becomes
         # [3, 4, 5, 6, 10]. We have some values left on the right array, so
-        # in the end, we add them and the array becomes [3, 4, 5, 6, 10, 11]
+        # in the end, we add them and the array becomes [3, 4, 5, 6, 10, 11].
         # If more values than 1 are left on an array, we can be sure that they
-        # are ordered correctly because the array was ordered in the previous
+        # are ordered correctly because the array was ordered in the previous.
         while len(left) > 0 and len(right) > 0:
             if left[0] < right[0]:
                 array.append(left[0])
@@ -142,14 +142,14 @@ def radix_sort(array):
 
         # By finding the partial sums and passing through the
         # initial array from the end to the beginning we can know
-        # each time how many values exist with the same or lower digit
+        # each time how many values exist with the same or lower digit.
         # For example, if temp = [1, 1, 0, 1, 0, 1, 0, 0, 0, 0]
-        # then it will become [1, 2, 2, 3, 3, 4, 4, 4, 4, 4]
+        # then it will become [1, 2, 2, 3, 3, 4, 4, 4, 4, 4].
         # If the array is [3, 11, 10, 5] then in the first pass
         # (first digit), when we start from number 5 we will
         # have 5 mod 10 = 5, temp[5] = 4, which means that there
         # were 3 number before the number 5 with a smaller value
-        # for their first digit
+        # for their first digit.
         # So, this number will go to the 4 - 1 = 3rd position
         for i in range(n-1, -1, -1):
             index = array[i] // step
@@ -249,12 +249,12 @@ def heapify_or_delete(array, n, i):
     # 2*i + 1 right child
     # i//2 parent
     # max heap, every parent node is greater or equal to its children
-    # To insert check every n//2 element and we swap if it's smaller than our new element (logn)
+    # To insert check every n//2 element and we swap if it's smaller than our new element (logn).
     # To delete we remove the root and the last element takes its place.
-    # Then we compare from top to bottom to maintain (logn)
-    # Height of binary tree is logn
-    # the max heap properties. Note that when comparing with children, we only need to compare with the biggest of them
-    # Half the nodes are at bottom
+    # Then we compare from top to bottom to maintain (logn).
+    # Height of binary tree is logn.
+    # Note that when comparing with children, we only need to compare with the biggest of them.
+    # Half the nodes are at bottom.
 
 
 def heap_sort(array):
@@ -268,7 +268,7 @@ def heap_sort(array):
 
     for i in range(n-1, 0, -1):
         # We can use the heapify that way cause it's like the deletion if we combine it
-        # with the first line in which we swap the elements
+        # with the first line in which we swap the elements.
         array[i], array[0] = array[0], array[i]
         heapify_or_delete(array, i, 0)
 
@@ -276,6 +276,8 @@ def heap_sort(array):
 
 
 """
+Bucket Sort
+    
 About bucket sort, we just divide the elements into buckets
 and then we sort each bucket using an existing sorting algorithm.
 It can be useful when the elements we have to sort are uniformly

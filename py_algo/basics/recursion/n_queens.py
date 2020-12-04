@@ -38,15 +38,15 @@ def find_cell(placed, queens, z):
         return True
     for i in range(z, z+1):                # We want to place each queen on a different row.
         for j in range(chessboard_len):
-            if is_attacked(i, j, placed):  # If the queen cannot be placed, try a different column
+            if is_attacked(i, j, placed):  # If the queen cannot be placed, try a different column.
                 continue
-            # Occupy the specific cell
-            # Call the function for the next queen on the next row
+            # Occupy the specific cell.
+            # Call the function for the next queen on the next row.
             placed[i][j] = 1
             if find_cell(placed, queens-1, i+1):
                 return True
             # If there wasn't a much, backtrack to another solution for the
-            # previous queen
+            # previous queen.
             placed[i][j] = 0
     return False
 
@@ -60,7 +60,7 @@ def is_attacked(x, y, placed):
         for j in range(chessboard_len):
             # We can find queens on the same diagonal
             # if the absolute difference between the (x, y) of a checked cell
-            # and the (i, j) of the queen we want to place are equal
+            # and the (i, j) of the queen we want to place are equal.
             row = abs(i-x)
             col = abs(j-y)
             if row == col and placed[i][j] == 1:

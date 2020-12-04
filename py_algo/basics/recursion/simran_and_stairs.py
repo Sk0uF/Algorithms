@@ -26,9 +26,9 @@ Final complexity: Undetermined
 
 
 def count_steps(count):
-    # For the first and second stairs, there 1 and 2 ways to get there
-    # For the third stair, there are 4 ways to get there
-    # For the rest stairs that we know, return the ways to get there
+    # For the first and second stairs, there 1 and 2 ways to get there.
+    # For the third stair, there are 4 ways to get there.
+    # For the rest stairs that we know, return the ways to get there.
     if count <= 2:
         steps[count] = count
         return steps[count]
@@ -40,7 +40,7 @@ def count_steps(count):
     if steps[count]:
         return steps[count]
 
-    # Lastly, call the function for the 3 previous steps
+    # Lastly, call the function for the 3 previous steps.
     steps[count] = count_steps(count-1) + count_steps(count-2) + count_steps(count-3)
     return steps[count]
 

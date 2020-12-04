@@ -41,14 +41,14 @@ for k in range(inp_len):
     set_bits_pos = []
 
     for i in range(len(bin_num2)):
-        if bin_num2[i] == "1":       # Note the position of set bits
+        if bin_num2[i] == "1":       # Note the position of set bits.
             set_bits_pos.append(i)
 
     last_set_bit = max(set_bits_pos)
     cnt = 0
     for bit in bin_num2:
-        # If statement to determine when we reach the last set bit
-        # That way we will stop printing the "+" sign
+        # If statement to determine when we reach the last set bit.
+        # That way we will stop printing the "+" sign.
         if bit == "1" and (last_set_bit - cnt) != 0:
             print("(" + str(num1) + "<<" + str(count) + ") + ", end="")
         elif bit == "1" and (last_set_bit - cnt) == 0:

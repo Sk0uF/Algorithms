@@ -51,7 +51,7 @@ fixed_alphabet = "abcdefghijklmnopqrstuvwxyz"
 
 
 def sort_key(s):
-    # Transform the word to the equivalent in the original alphabet
+    # Transform the word to the equivalent in the original alphabet.
     temp = ""
     for i in range(len(s)):
         temp += alph_dict[s[i]]

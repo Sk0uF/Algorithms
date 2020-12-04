@@ -41,9 +41,9 @@ Final complexity: Undetermined
 """
 
 # We create 2 cache's, one for the first 1000000 input
-# and one for the rest
+# and one for the rest.
 # We do that for speed purposes, just
-# because the problem didn't accept the solution for just a small margin
+# because the problem didn't accept the solution for just a small margin.
 cache = {}
 cache2 = {}
 mod = 1000000009
@@ -61,8 +61,8 @@ def ans(n):
             cache[n] = 10
             return cache[n]
 
-        temp1 = ans(n//2)     # Split in half
-        temp2 = ans(n//2-1)   # Split in half to find the number of times 13 appears in the middle
+        temp1 = ans(n//2)     # Split in half.
+        temp2 = ans(n//2-1)   # Split in half to find the number of times 13 appears in the middle.
 
         if (n % 2) == 0:
             cache[n] = (temp1*temp1 - temp2*temp2) % mod
@@ -176,6 +176,6 @@ Final complexity: O(logN)
 # for _ in range(inp_len):
 #     n = int(input())
 #
-#     a = ans(n-1, array1)                        # Do the matrix exponentiation
-#     array3 = mult(a, array2)                    # Do the final multiplication of the equation
-#     print((array3[0][0] + array3[1][0]) % mod)  # Add the happy and state states
+#     a = ans(n-1, array1)                        # Do the matrix exponentiation.
+#     array3 = mult(a, array2)                    # Do the final multiplication of the equation.
+#     print((array3[0][0] + array3[1][0]) % mod)  # Add the happy and state states.

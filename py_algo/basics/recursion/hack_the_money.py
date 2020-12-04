@@ -46,7 +46,7 @@ def money_hack(n, first_hack=10, second_hack=20):
         return True
     # If the numbers is < 1 this means that we cant
     # reach the desired number with
-    # the hack order that was followed
+    # the hack order that was followed.
     if first_n < 1 or second_n < 1:
         return False
     if money_hack(first_n) or money_hack(second_n):

@@ -66,8 +66,8 @@ for i in range(inp_len):
 
     while num:
         # Count the number of 1's using bit manipulation
-        # num - 1 changes the LSB and the bits right to it
-        # Each time we make num & (num - 1) we remove the LSB
+        # num - 1 changes the LSB and the bits right to it.
+        # Each time we make num & (num - 1) we remove the LSB.
         num = num & (num - 1)
         count += 1
     print(count)

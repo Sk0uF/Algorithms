@@ -27,16 +27,16 @@ Final complexity: Undetermined
 
 
 def knight_movement(i, j, n):
-    # If knight is out of bounds don't count it
+    # If knight is out of bounds don't count it.
     if i < 0 or i >= 10 or j < 0 or j >= 10 or n < 0:
         return 0
     # If the knight is in the bounds and haven't visited the square
-    # then count it
+    # then count it.
     if n == 0 and visited[i][j] == 0:
         visited[i][j] = 1
         return 1
     count = 0
-    # Those are the possible 8 different squares the knight can move
+    # Those are the possible 8 different squares the knight can move.
     count += knight_movement(i+2, j+1, n-1)
     count += knight_movement(i-2, j+1, n-1)
     count += knight_movement(i+2, j-1, n-1)

@@ -38,7 +38,7 @@ Final complexity: O(2*N) => O(N)
 inp_len = int(input())
 bit_list = list(map(int, input().rstrip().split()))
 q_len = int(input())
-# Creating 2 supplementary arrays
+# Creating 2 supplementary arrays.
 count_queries_before = [0] * inp_len
 count_queries_after = [0] * inp_len
 count = 0
@@ -46,8 +46,8 @@ count_ones = 0
 
 for i in range(0, q_len):
     rl = list(map(int, input().rstrip().split()))
-    # The first array contains the starting positions of all the queries
-    # The second array contains the ending positions of all the queries
+    # The first array contains the starting positions of all the queries.
+    # The second array contains the ending positions of all the queries.
     count_queries_before[rl[0]-1] += 1
     count_queries_after[rl[1]-1] += 1
 
@@ -59,9 +59,9 @@ if count % 2 != 0:
         bit_list[0] = 0
 
 for i in range(1, inp_len):
-    # For each next index
-    # Add the amount of of queries starting from there
-    # Subtract the amount of queries ending 1 index before
+    # For each next index,
+    # add the amount of of queries starting from there and
+    # subtract the amount of queries ending 1 index before.
     count += count_queries_before[i]
     count -= count_queries_after[i-1]
 

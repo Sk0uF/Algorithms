@@ -46,7 +46,7 @@ initialPos = 1
 
 # Initially, find for the first element of the array
 # the position that it will land and the steps needed
-# to land there
+# to land there.
 while initialPos <= inpLen:
     initialPos += initialSteps
     initialSteps += 1
@@ -54,22 +54,22 @@ while initialPos <= inpLen:
 initialPos -= initialSteps-1
 initialSteps -= 2
 
-# This is our initial sum
-# From now on, we either need to subtract or to add some values
+# This is our initial sum.
+# From now on, we either need to subtract or to add some values.
 initSum = sum(a[:initialPos])
 sm = initSum
 
 for i in range(1, inpLen):
-    # First of all, for each next index, subtract the previous one
-    # If we haven't landed outside the array, it means we have landed one index further than the previous one
+    # First of all, for each next index, subtract the previous one.
+    # If we haven't landed outside the array, it means we have landed one index further than the previous one.
     initSum -= a[i-1]
     if initialPos < inpLen:
         initSum += a[initialPos]
         initialPos += 1
     else:
-        # If we land outside the array, it means that we have to subtract some more values
-        # It basically means that for the step we used the position was outside the array
-        # So we subtract the values from the position minus the step
+        # If we land outside the array, it means that we have to subtract some more values.
+        # It basically means that for the step we used the position was outside the array.
+        # So we subtract the values from the position minus the step.
         initSum -= sum(a[initialPos-(initialSteps-1):inpLen])
         initialPos -= (initialSteps - 1)
         initialSteps -= 1

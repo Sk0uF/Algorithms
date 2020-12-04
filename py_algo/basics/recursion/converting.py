@@ -42,19 +42,19 @@ Final complexity: Undetermined
 
 def operation(a, b, c):
     if a >= b:
-        # First case, we don't need recursion
+        # First case, we don't need recursion.
         print("First if count + " + str((a-b) // 2 + (a-b) % 2))
         return (a-b) // 2 + (a-b) % 2
 
     if b % c == 0:
         # Second case, we need to call the function
-        # with b = b//c
+        # with b = b//c.
         print("Second if, b = " + str(b//c) + " count + 1 ")
         return 1 + operation(a, b//c, c)
 
     else:
         # Third case, we need to call the the function
-        # with b = t and count the steps to reach b from t
+        # with b = t and count the steps to reach b from t.
         t = (b//c+1) * c
         print("Third if, t = " + str(t) + " count + " + str((t-b) // 2 + (t-b) % 2))
         return (t-b) // 2 + (t-b) % 2 + operation(a, t, c)

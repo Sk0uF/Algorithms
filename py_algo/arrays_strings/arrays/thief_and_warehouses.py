@@ -63,21 +63,21 @@ for _ in range(inp_len):
     index = 0
 
     # Insert the index in the queue if the sacks on the
-    # right are more than the previous value
+    # right are more than the previous value.
     while index < len(sacks):
         if (not stack) or (sacks[stack[-1]] <= sacks[index]):
             stack.append(index)
             index += 1
         else:
             # If we find less sacks on the right
-            # pop the last index from the queue
+            # pop the last index from the queue.
             top_of_stack = stack.pop()
             # If the stack is not empty after the pop
             # then the range is the current index minus the
-            # index on the left of the popped index minus 1
+            # index on the left of the popped index minus 1.
             #
             # Otherwise, the range is just the index, because it
-            # means that we count from the beginning
+            # means that we count from the beginning.
             if stack:
                 area = sacks[top_of_stack] * (index - stack[-1] - 1)
             else:
@@ -88,10 +88,10 @@ for _ in range(inp_len):
 
     # If after completing the previous procedure there are
     # indices left, then do exactly the same until the
-    # stack is empty
+    # stack is empty.
     #
     # This could happen for example if
-    # every rectangle is smaller than the next one
+    # every rectangle is smaller than the next one.
     while stack:
         top_of_stack = stack.pop()
         if stack:

@@ -53,7 +53,7 @@ for _ in range(inp_len):
     n, k = map(int, input().rstrip().split())
     a = input().rstrip()
     bits = len(a)
-    mask = (1 << bits) - 1  # We find the mask by doing: 2^bits - 1, for example 2^5 - 1 = 31 = 11111
+    mask = (1 << bits) - 1  # We find the mask by doing: 2^bits - 1, for example 2^5 - 1 = 31 = 11111.
     dec_a = int(a, 2)
     max_num = dec_a
     index = 0
@@ -64,7 +64,7 @@ for _ in range(inp_len):
 
         # If the max is equal to temp then it means that there is some kind of symmetry
         # in the binary representation and we don't need full circular shifts to reach
-        # again the maximum number
+        # again the maximum number.
         if temp == max_num:
             symmetric = i - index
             break

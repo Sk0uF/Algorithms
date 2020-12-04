@@ -59,7 +59,7 @@ def solve (A, R, L):
     partial_sums.append(A[0])
     sums = []
 
-    # Create the partial sums array
+    # Create the partial sums array.
     for i in range(1, N):
         partial_sums.append(A[i] + partial_sums[i-1])
 
@@ -70,15 +70,15 @@ def solve (A, R, L):
         remaining = diff % N
 
         if remaining != 0:
-            # Find the lower point in the original array
-            # Find the upper point in the original array
+            # Find the lower point in the original array.
+            # Find the upper point in the original array.
             lower = (R[i] - remaining + 1 - 1) % N
             upper = (R[i] - 1) % N
 
-            # From the beginning to the upper bound
-            # From lower bound to the upper bound
-            # From the lower bound to the end plus from the beginning to the upper bound
-            # Those are the possible steps
+            # From the beginning to the upper bound.
+            # From lower bound to the upper bound.
+            # From the lower bound to the end plus from the beginning to the upper bound.
+            # Those are the possible steps.
             if upper >= lower:
                 if upper == 0 or lower == 0:
                     sum += partial_sums[upper]

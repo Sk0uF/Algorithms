@@ -40,14 +40,14 @@ for i in range(test_cases):
         count = 0
         num = tasks[j]
         while num:
-            # Count the number of 1's using bit manipulation
-            # num - 1 changes the LSB and the bits right to it
-            # Each time we make num & (num - 1) we remove the LSB
+            # Count the number of 1's using bit manipulation.
+            # num - 1 changes the LSB and the bits right to it.
+            # Each time we make num & (num - 1) we remove the LSB.
             num = num & (num - 1)
             count += 1
         tasks_bin.append(count)
 
-    # Sort based on the first element of each sub-pair
+    # Sort based on the first element of each sub-pair.
     final = [x for _, x in sorted(zip(tasks_bin, tasks), key=lambda pair: pair[0])]
     print(*final)
 

@@ -46,27 +46,27 @@ similar = False
 
 for i in range(1, N):
     if A[i-1] + 1 == A[i]:
-        # Increase the segment of similar elements
-        # We need to know if there is at least 1 pair of indices that is similar
+        # Increase the segment of similar elements.
+        # We need to know if there is at least 1 pair of indices that is similar.
         # If the elements are equal, we just need to increase the segment but
         # we don't have a similar boolean variable, to avoid the case of 2 equal
-        # elements, not being similar to another element
+        # elements, not being similar to another element.
         eq += 1
         similar = True
     elif A[i-1] == A[i]:
         eq += 1
     else:
         # Only if we had found similar elements, calculate all the other similar
-        # elements that are created due to the properties of the problem
-        # Now the segment starts from the beginning
+        # elements that are created due to the properties of the problem.
+        # Now the segment starts from the beginning.
         if similar:
             count += eq * (eq - 1)//2
             similar = False
         eq = 1
 
-# This accounts for the case that only the last 2 indices were found similar
+# This accounts for the case that only the last 2 indices were found similar.
 # The segment could be big, because there might were a lot of continues equal
-# elements before the last similarity of the last 2 indices
+# elements before the last similarity of the last 2 indices.
 if similar:
     count += eq * (eq - 1) // 2
 

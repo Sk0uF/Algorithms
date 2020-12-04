@@ -52,8 +52,8 @@ def divisor(n, k):
     if n == 0:
         return 0
 
-    # If n = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] and k = 3, then 3, 6, 9 are multiples of k
-    # By doing 10//3 = 3, we have n = [1, 2, 3] = [3/3, 6/3, 9/3]
+    # If n = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] and k = 3, then 3, 6, 9 are multiples of k.
+    # By doing 10//3 = 3, we have n = [1, 2, 3] = [3/3, 6/3, 9/3].
     jump = n//k
     return divisor(jump, k) + n * (n+1) // 2 - k * jump * (jump+1) // 2
 
