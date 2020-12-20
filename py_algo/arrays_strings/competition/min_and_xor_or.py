@@ -1,4 +1,6 @@
 """
+Codemonk link: https://www.hackerearth.com/problem/algorithm/minimum-and-xor-or-3fa51940/
+
 Given an array A of N integers, find out the minimum value of the following expression for all valid i, j.
 (Ai and Aj) xor (Ai or Aj), where i != j
 

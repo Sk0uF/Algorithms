@@ -1,4 +1,6 @@
 """
+Codemonk link: https://www.hackerearth.com/problem/algorithm/the-unlucky-13-d7aea1ff/
+
 Write a program to calculate the total number of strings that are made of exactly N characters. None of the strings can
 have "13" as a substring. The strings may contain any integer from 0 - 9, repeated any number of times.
 

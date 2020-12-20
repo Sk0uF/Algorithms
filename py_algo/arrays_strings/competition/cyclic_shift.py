@@ -1,4 +1,6 @@
 """
+Codemonk link: https://www.hackerearth.com/problem/algorithm/maximum-binary-number-cb9a58c1/
+
 A large binary number is represented by a string A of size N and comprises of 0s and 1s. You must perform a cyclic shift
 on this string. The cyclic shift operation is defined as follows: If the string A is [A0, A1, A2, ..., AN-1], then after
 performing one cyclic shift, the string becomes [A1, A2, ..., AN-1, A0]. You performed the shift infinite number of
