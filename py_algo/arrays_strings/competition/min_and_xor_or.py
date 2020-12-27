@@ -43,6 +43,12 @@ There are 2 cases now:
 
 A[i] cannot be 1 because then B[i] has to be 0. This is the first bit that they differ and because B > A, B[i] must be 1
 and A[i] 0.
+
+O(T) for the first "for" statement because the input
+length is significant. O(NlogN) for the the sort and
+O(N) for the last "for" statement. 
+
+Final complexity: O(T + N + NlogN) => O(NlogN)
 """
 
 inp_len = int(input())

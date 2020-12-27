@@ -26,7 +26,7 @@ multiplication 2 * (11) = 2 * 2^1 + 2 * 2^0 = 2 << 1 + 2 << 0
 We will consider the input length significant and the same as N and M. The bin function has complexity O(logN).
 The first "for" statement will have O(N) and the other for statements are insignificant.
 
-Final complexity: O(N*logN)
+Final complexity: O(NlogN)
 """
 
 inp_len = int(input())

@@ -46,7 +46,6 @@ The constraints are insignificant though.
 Final complexity: O(1)
 """
 
-
 fixed_alphabet = "abcdefghijklmnopqrstuvwxyz"
 
 
