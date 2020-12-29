@@ -1,11 +1,32 @@
-'''
+"""
+Codemonk link: https://www.hackerearth.com/practice/algorithms/sorting/merge-sort/practice-problems/algorithm/the-sorted-array/
 
+Adi loves to play with arrays. He simply wants to sort this array in increasing order. For doing this he can swap any
+two adjacent elements i.e. a[i] and a[i+1] where 1 <= i <= N-1  (1 based indexing). In swapping the value of a[i]
+decreases by 1 while a[i+1] increases by 1. This operation can be applied any number of times he want. Can you help him
+find the final sorted array?
 
-'''
+Input - Output:
+In first line you are given an integer t, the number of test cases.
+In each of t lines the first line contains an integer n.
+Then next line contains n space separated integers.
+If the sorted array exists then Print “YES” and print the sorted
+array in next line. Else print “NO”.
 
+Sample input:
+2
+4
+7 3 9 10
+3
+11 1 9
 
-'''
+Sample Output:
+YES
+4 6 9 10
+NO
+"""
 
+"""
 We will showcase two different train of thoughts that are implemented with the exact same way.
 
 In common sorting algorithms, our sorting condition is simple. To find out if an element a[i], will end at the left or
@@ -45,7 +66,8 @@ would move to right and decrease meaning that this would be now lower and the sa
 place the second one first. Finally, we once again subtract from each element of the final array its index to find the
 final sorted array.
 
-'''
+Final complexity: O(N + NlogN) => O(NlogN)
+"""
 
 inp_len = int(input())
 

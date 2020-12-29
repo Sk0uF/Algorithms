@@ -1,3 +1,38 @@
+"""
+Codemonk link: https://www.hackerearth.com/problem/algorithm/max-num-6fbf414b/
+
+You are given an array A of n elements A1, A2, ..., An. Let us define a function F(x) = ΣAi&x. Here, & represents
+bitwise AND operator. You are required to find the number of different values of x for which F(x) is maximized. There
+exists a condition for x that it must have exactly l bits sets in its binary representation. Your task is to find a
+number of such values for which this function is maximized. Print the required number. If there are infinite such
+numbers, then print -1.
+
+Input - Output:
+The first line contains the number of test cases.
+The second line contains two space-separated integers n and l.
+The third line contains the array.
+There are T lines of the output. The only line of output for each
+test case contains a single integer as described in the problem statement.
+
+Sample input:
+2
+5 2
+3 5 7 1 4
+5 1
+3 5 7 1 4
+
+Sample Output:
+2
+1
+"""
+
+"""
+
+
+Final complexity:
+"""
+
+
 def factorial(n):
     fact = 1
     for i in range(1, n + 1):
