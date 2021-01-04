@@ -27,10 +27,34 @@ Sample Output:
 
 """
 Find the frequencies of the elements of the array. For each element of the array, check if the frequency of the next
-element is bigger or not. If it isn't, add the index to the stack. If it is then this element is the answer for that 
-element
+element is bigger or not. If it isn't, add the index to the stack. If it is then this element is the answer for our 
+current element. Remove the current element from the stack and check with the new top element of the stack until that
+same next element is not bigger. Finally, add that element to the stack and repeat the same process. If the stack is 
+empty, it means that we found an answer for every element. Otherwise, the elements left on the stack have an answer -1,
+meaning we didn't find the desired value. This technique works because we always make sure to keep elements on the stack
+that have descending frequencies. The moment we find a bigger frequency than the frequency of the current top element of
+the stack we have find how many of the previous elements this element satisfies. For example: 1 3 7 2 5 1 4 2 1 5 which
+has a frequency array 3 1 1 2 2 3 1 2 3 2.
 
-Final complexity: Undetermined
+1)  stack = 1      answer = [-]
+2)  stack = 13     answer = [-, -]
+3)  stack = 137    answer = [-, -, -]
+4)  stack = 12     answer = [-, 2, 2, -]
+5)  stack = 125    answer = [-, 2, 2, -, -] 
+6)  stack = 11     answer = [-, 2, 2, 1, 1]              
+7)  stack = 114    answer = [-, 2, 2, 1, 1, -]
+8)  stack = 112    answer = [-, 2, 2, 1, 1, 2, -]
+9)  stack = 111    answer = [-, 2, 2, 1, 1, 2, 1, -]
+10) stack = 1115   answer = [-1, 2, 2, 1, 1, 2, 1, -1, -1]
+
+The worst case complexity is if we end up with an empty stack
+which means that we went through the array twice. Such an example
+is the array = [5, 5, 5, 5, 5, 5, 10]. In that particular case 
+we will first loop through all the elements until we reach the last
+one and then we will go back to the beginning because the last element
+satisfies the condition for all the previous elements.
+
+Final complexity: O(2*N) => O(N)
 """
 
 t = int(input())
@@ -62,6 +86,13 @@ for _ in range(t):
         print(ans[i], end=" ")
     print()
 
+"""
+The only difference here is that we are using lists instead of dictionaries for our calculations. The speed difference 
+between the methods is not significant. Prefer lists when the elements are very dense, for example 1, 2, 3, 4, 5 and
+dictionaries when they are sparse, for example 1, 834759, 123132123712983.
+
+Final complexity: O(2*N) => O(N)
+"""
 
 # t = int(input())
 # for _ in range(t):
