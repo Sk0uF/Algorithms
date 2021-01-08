@@ -46,7 +46,10 @@ The first time, the binary search will find the number 26, index 3 (counting fro
 number 24, index 2. The third time it will find number 15, index 2 and it will end. The answer is index + 1 = 3. That
 is the maximum possible size that follows the rules of the problem.
 
-Final complexity: O(NlogN)
+O(N) to find the partial sums and O(NlogN) for the
+binary search.
+
+Final complexity: O(N + NlogN) => O(NlogN)
 """
 
 
@@ -83,7 +86,49 @@ for i in range(n):
         break
 
 """
+Following the same logic, this time we will solve the problem with the "two pointers technique" in linear time. We can
+start from the beginning of the array and keep moving right (calculating the sum) up to the point that we find a sum
+greater than X. Then we begin from the next element of the array but this time we will directly begin from the point 
+we ended before. We can do that because we can be sure that up to that point the sum is less than X because it was less
+when we started from the previous element and thus we also had a one more element. To find the sums we use the partial
+sums array. In that process we are counting the range from left to right and we keep the smaller one because if a 
+smaller one occurs it means that the subarrays for the bigger range was not valid at a specific point. If we reach the 
+end of the array we stop and that means we have found our answer. In the general case, the complexity of that technique
+is O(Y + N) where Y is the number of times we move to the right. Obviously we can move to the right no more than N times
+because this the length of our array, giving us a O(2*N) complexity. In our case though, the moment we reach the end of 
+the array we stop the "for" loop, giving us a O(N) complexity.
 
-
-Final complexity: 
+Final complexity: O(N)
 """
+
+# n, x = map(int, input().rstrip().split())
+# a = list(map(int, input().rstrip().split()))
+#
+# partial_sums = [a[0]]
+# for i in range(1, n):
+#     partial_sums.append(partial_sums[i-1] + a[i])
+#
+# right = 0
+# min_length = float('inf')
+# for left in range(n):
+#     if left == 0:
+#         temp_sum = partial_sums[right]
+#     else:
+#         temp_sum = partial_sums[right] - partial_sums[left-1]
+#
+#     while temp_sum <= x:
+#         right += 1
+#         if right == n:
+#             break
+#         if left == 0:
+#             temp_sum = partial_sums[right]
+#         else:
+#             temp_sum = partial_sums[right] - partial_sums[left - 1]
+#
+#     if right-left < min_length:
+#         min_length = right-left
+#
+#     if right == n:
+#         break
+#
+# print(min_length)
