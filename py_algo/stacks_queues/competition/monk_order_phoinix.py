@@ -60,7 +60,11 @@ the other rows. Each time, we try to find the first bigger element and if exists
 the next bigger element from the previous value we found. If at any point a value like that doesn't exist, then we will
 print "NO", otherwise "YES".
 
-Final complexity: O(Q)
+Worst case scenario is if we only have queries of the third
+type. That means that we are going to make a binary search 
+over N rows for Q times.
+
+Final complexity: O(Q*NlogX)
 """
 
 

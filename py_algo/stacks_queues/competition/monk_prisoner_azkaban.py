@@ -48,7 +48,7 @@ it then we can find y as well.
 
 We can implement this technique with more than 1 ways. See the comments in the code for this particular implementation.
 
-Final complexity: O(2*N) => O(N)
+Final complexity: O(2*N + 2*N) => O(N)
 """
 
 n = int(input())
