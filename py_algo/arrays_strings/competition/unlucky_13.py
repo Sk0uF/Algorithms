@@ -105,8 +105,8 @@ for i in range(inp_len):
 
 
 """
-Consider we have 2 states, the happy states, h(n), which are characters that end with {0, 2, 3, 4, 5, 6, 7, 8, 9} and
-the sad states, s(n), which are characters that end with {1}. We can transition with 9 different ways from a happy
+Consider we have 2 states, the happy states, h(n), which are strings that end with {0, 2, 3, 4, 5, 6, 7, 8, 9} and
+the sad states, s(n), which are strings that end with {1}. We can transition with 9 different ways from a happy
 state to a happy state (there are 0 restrictions) and with 8 different ways from a sad state to a happy one because 
 being on a sad state means the character ended with 1 and we can go to every number from the happy state but the number
 3, {0, 2, 4, 5, 6, 7, 8, 9} Following the same logic, we have only 1 way to reach a sad state from a happy one and the
@@ -118,7 +118,7 @@ same holds to reach a sad state from a sad state. The above can be written down 
 Our base cases are h(1) = 9 and s(1) = 1. If we keep doing the same thing we will have:
 
 [h(n)] = [9 8]^2 *[h(n-2)] => [h(n)] = [9 8]^n-1 *[h(1)] => [h(n)] = [9 8]^n-1 * [1]  
-[s(n)]   [1 1]    [s(n-2)]    [s(n)]   [1 1]    [s(n-2)]    [s(n)]   [1 1]       [1]  
+[s(n)]   [1 1]    [s(n-2)]    [s(n)]   [1 1]      [s(1)]    [s(n)]   [1 1]       [1]  
 
 This is called matrix exponentiation and as we can see, we need to make array multiplication and we need to make it as
 fast as we can. That's why we need to write our own exponentiation function, which uses the exact same logic as the
