@@ -27,14 +27,18 @@ Sample Output:
 That's a pure math's problem. The total amount of combinations if we could place the first army wherever we wanted,
 would be the combinations of picking N out of 2*N positions. 2*N are the total soldiers of both armies. That can be
 easily calculated by our logic, or, if we already understand the logic behind it, we can directly use the binomial
-coefficient. From the total amount of combinations we must subtract those that are invalid ... (tbc).
+coefficient. From the total amount of combinations we must subtract those that are invalid. How many are those? The 
+answer is bionomial(2n, n+1). If we make the total calculation, we derive the catalan number.
 
 1) bionimial(2n, n+1) = n/(n+1)*bionimial(2n, n). The proof is very easy.
 2) bionimial(2n, n) - (bionimial(2n, n+1) = bionimial(2n, n) - n/(n+1)*bionimial(2n, n)
    = bionimial(2n, n) * [1-n/(n+1)] = 1/(n+1) * bionimial(2n, n) = 1/(n+1) * (2n)!/(n!n!)
-   
+
+To further understand the amount of invalid combinations, refer to the paper of Rukavicka Josef (2011).
 Since our mod is a prime number, we can calculate using the Fermat's little theorem the modulo inverse for n! and n+1
 and make the calculation easier.
+
+O(logN) for the exponentiations and O(N) for the factorizations.
 
 Final complexity: O(N)
 """
@@ -68,4 +72,3 @@ c = exponentiate(n+1, mod-2)
 answer = (a*b*b*c) % mod
 
 print(answer)
-
