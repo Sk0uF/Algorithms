@@ -33,8 +33,12 @@ answer is bionomial(2n, n+1). If we make the total calculation, we derive the ca
 1) bionimial(2n, n+1) = n/(n+1)*bionimial(2n, n). The proof is very easy.
 2) bionimial(2n, n) - (bionimial(2n, n+1) = bionimial(2n, n) - n/(n+1)*bionimial(2n, n)
    = bionimial(2n, n) * [1-n/(n+1)] = 1/(n+1) * bionimial(2n, n) = 1/(n+1) * (2n)!/(n!n!)
+   
+The above explanation is not THAT straight forward. Another, better way to understand the derivation of the catalan 
+number and the one suggested has been proven in the paper of Rukavicka Josef (2011). Just to give a brief spoil, the 
+catalan number is: 1/(n+1) * bionomial(2n, n). It's like we split the bionomial term in n+1 equal parts and the answer
+is one of them!! 
 
-To further understand the amount of invalid combinations, refer to the paper of Rukavicka Josef (2011).
 Since our mod is a prime number, we can calculate using the Fermat's little theorem the modulo inverse for n! and n+1
 and make the calculation easier.
 
