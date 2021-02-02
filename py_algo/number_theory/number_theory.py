@@ -32,7 +32,7 @@ def modulo_properties():
 def exponentiate(number, exponent):
     """
     Exponentiation - serial method
-    Complexity: O(log(exponent))
+    Complexity: O(logEXPONENT)
     """
     if exponent == 2:
         return number ** 2
@@ -53,7 +53,7 @@ def exponentiate(number, exponent):
 def rec_exponentiate(number, exponent):
     """
     Exponentiation - recursive method
-    Complexity: O(log(exponent))
+    Complexity: O(logEXPONENT)
     """
     if exponent == 0:
         return 1
@@ -66,7 +66,7 @@ def rec_exponentiate(number, exponent):
 def mod_rec_exponentiate(number, exponent, mod):
     """
     Modular exponentiation - recursive method
-    Complexity: O(log(exponent))
+    Complexity: O(logEXPONENT)
 
     Sometimes, when the number can be extremely big, we find
     the answer modulo some other number. We can do it in both
@@ -84,7 +84,7 @@ def mod_rec_exponentiate(number, exponent, mod):
 def euclidean_gcd(a, b):
     """
     Euclidean algorithm
-    Complexity: O(log(min(a, b))
+    Complexity: O(log(min(A, B))
 
     Euclidean algorithm to find the GCD of two
     numbers. It takes advantage of the property
@@ -99,7 +99,7 @@ def euclidean_gcd(a, b):
 def extended_euclidean(a, b):
     """
     Extended Euclidean algorithm
-    Complexity: O(log(min(a, b))
+    Complexity: O(log(min(A, B))
 
     Find x and y in the problem a*x + b*y = GCD(a, b).
     The above equation is based in the property
@@ -117,7 +117,7 @@ def extended_euclidean(a, b):
 def is_prime(number):
     """
     Find if a number is prime
-    Complexity: O(sqrt(number))
+    Complexity: O(sqrt(NUMBER))
 
     If n is a non prime integer then there is a prime
     p that divides n (p | n) and p^2 <= n. We use the
@@ -134,11 +134,13 @@ def is_prime(number):
 
 
 # More research needed to completely understand
-# the maths behind the multiplicative modular inverse.
+# the maths behind the multiplicative modular inverse,
+# the reasoning behind the Eratosthenes sieve complexity
+# as well as the Eratosthenes sieve complexity for segments.
 def modular_inverse_extended_euclidean(a, m):
     """
     Modular Inverse - Extended Euclidean
-    Complexity: O(log(min(a, b))
+    Complexity: O(log(min(A, B))
 
     If a and m are coprime, GCD(a, m) = 1 and
     a*x + m*y = 1, then x is the modular inverse.
@@ -150,7 +152,7 @@ def modular_inverse_extended_euclidean(a, m):
 def modular_inverse_fermat(a, m):
     """
     Modular Inverse - Fermat
-    Complexity: O(logm)
+    Complexity: O(logM)
 
     When m is prime and a integer, not a multiple of m,
     we can find the multiplicative modulo inverse of a and m
@@ -169,15 +171,144 @@ def modular_inverse_fermat(a, m):
     [a*mod(m) * a^(m-2)*mod(m)]mod(m) = 1
     [a*mod(m) * a^-1*mod(m)]mod(m) = 1
 
-    So, we can just find a^(m-2)*mod(m).
+    So, we can just find a^(m-2)*mod(m). Note that the inverse must
+    be < m, thus a^-1 and a^-1*mod(m) is the exact same number.
     """
     return mod_rec_exponentiate(a, m-2, m)
 
 
+def eratosthenes_sieve(n):
+    """
+    Sieve of Eratosthenes
+    Complexity: O(NloglogN)
+
+    We can find all the prime number up to specific
+    point. This technique is based on the fact that
+    the multiples of a prime number are composite numbers.
+    That happens because a multiple of a prime number will
+    always have 1, itself and the prime as a divisor (maybe
+    even more) and thus, it's not a prime number. A common
+    rule for sieves is that they have O(logn) complexity.
+    """
+    primes = [True] * (n+1)
+    primes[0] = False
+    primes[1] = False
+    i = 2
+
+    while i*i <= n:
+        if primes[i]:
+            for j in range(i*i, n+1, i):
+                primes[j] = False
+        i += 1
+
+    final_primes = []
+    for i in range(len(primes)):
+        if primes[i]:
+            final_primes.append(i)
+
+    return final_primes
+
+
+def segment_eratosthenes_sieve(l, r):
+    """
+    Sieve of Eratosthenes for segments
+    Complexity: ?????
+
+    Only useful when we can create an array
+    of length R-L+1.
+    """
+    primes = [True] * (r-l+1)
+    final_primes = []
+    i = 2
+    while i*i <= r:
+        for j in range(max(i*i, (l+i-1) // i * i), r+1, i):
+            primes[j-l] = False
+        i += 1
+
+    for i in range(max(l, 2), r+1):
+        if primes[i-l]:
+            final_primes.append(i)
+
+    print(final_primes)
+
+
+def mod_sqrt_fact_eratosthenes_sieve(n):
+    """
+    Something like a sieve of Eratosthenes for factorization - 1
+    Complexity: O(sqrt(N))
+
+    We can find all the factors of a number using a simple
+    alternation to the Eratosthenes sieve. Factors are the
+    numbers you multiply to get another number. Those numbers
+    can be written as prime only numbers. Why? Lets take the
+    number 20 for example. Its factors are 4 and 5, or 2 and 10
+    etc. All of these can be written as 2 * 2 * 5 though, which
+    is unique. It becomes obvious that every non prime number
+    can be written as the multiplication of primes. As already
+    states if n is non prime then there is a prime that divides
+    it and p^2 <= n and that's the reason why we loop only up
+    to sqrt(n). We basically find the minimum prime that divides
+    our number. When we find it, we divide the number by that
+    prime and we continue the same process.
+    """
+    i = 2
+    factorial = []
+    while i*i <= n:
+        while n % i == 0:
+            factorial.append(i)
+            n //= i
+        i += 1
+
+    if n != 1:
+        factorial.append(n)
+
+    return factorial
+
+
+def mod_log_fact_eratosthenes_sieve(n):
+    """
+    Something like a sieve of Eratosthenes for factorization - 2
+    Complexity: O(logN) - assuming we have precomputed some values
+
+    If for some reason we have found the minimum prime factor for
+    all the numbers up to the number we want to factorize then we
+    can factorize with that technique. We can do that in O(NloglogN)
+    using the original Eratosthenes sieve. Thus, this O(logN) is
+    misleading. We also need to be able to create an array of length
+    N, which may not be effective in cases where N is very big.
+    """
+    # Finding the minimum prime factor for every number up to n
+    # using Eratosthenes sieve in O(NloglogN) time.
+    min_prime = [0] * (n+1)
+    i = 2
+    while i*i <= n:
+        if min_prime[i] == 0:
+            for j in range(i*i, n+1, i):
+                if min_prime[j] == 0:
+                    min_prime[j] = i
+        i += 1
+
+    for i in range(2, n+1):
+        if min_prime[i] == 0:
+            min_prime[i] = i
+
+    # Finding the factors in O(logN) time.
+    factorial = []
+    while n != 1:
+        factorial.append(min_prime[n])
+        n //= min_prime[n]
+
+    return factorial, min_prime
+
+
 # print(exponentiate(5, 5))
 # print(rec_exponentiate(5, 5))
-print(euclidean_gcd(16, 10))
-print(extended_euclidean(16, 10))
-print(is_prime(11))
-print(modular_inverse_fermat(5, 11))
-print(modular_inverse_extended_euclidean(5, 11))
+# print(euclidean_gcd(16, 10))
+# print(extended_euclidean(16, 10))
+# print(is_prime(11))
+# print(modular_inverse_fermat(5, 11))
+# print(modular_inverse_extended_euclidean(5, 11))
+# print(eratosthenes_sieve(20))
+# print(mod_sqrt_fact_eratosthenes_sieve(20))
+# print(mod_log_fact_eratosthenes_sieve(20))
+segment_eratosthenes_sieve(0, 20)
