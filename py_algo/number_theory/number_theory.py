@@ -126,7 +126,14 @@ def is_prime(number):
     if number == 0 or number == 1:
         return False
 
-    for i in range(2, int(number**(1/2))):
+    # The +1 includes the number. For example if the number is 49
+    # then the sqrt is 7 and the code would run from 2 to 6. That's
+    # why we add the +1.
+    #
+    # We can implement the same thing with a while statement like:
+    # while i*i <= number but that's slower because it solves the
+    # exact same problem but sqrt's implementation is faster.
+    for i in range(2, int(number**0.5) + 1):
         if number % i == 0:
             return False
 
@@ -193,13 +200,10 @@ def eratosthenes_sieve(n):
     primes = [True] * (n+1)
     primes[0] = False
     primes[1] = False
-    i = 2
-
-    while i*i <= n:
+    for i in range(2, int(n**0.5) + 1):
         if primes[i]:
             for j in range(i*i, n+1, i):
                 primes[j] = False
-        i += 1
 
     final_primes = []
     for i in range(len(primes)):
@@ -219,17 +223,15 @@ def segment_eratosthenes_sieve(l, r):
     """
     primes = [True] * (r-l+1)
     final_primes = []
-    i = 2
-    while i*i <= r:
+    for i in range(2, int(r**0.5) + 1):
         for j in range(max(i*i, (l+i-1) // i * i), r+1, i):
             primes[j-l] = False
-        i += 1
 
     for i in range(max(l, 2), r+1):
         if primes[i-l]:
             final_primes.append(i)
 
-    print(final_primes)
+    return final_primes
 
 
 def mod_sqrt_fact_eratosthenes_sieve(n):
@@ -251,13 +253,11 @@ def mod_sqrt_fact_eratosthenes_sieve(n):
     our number. When we find it, we divide the number by that
     prime and we continue the same process.
     """
-    i = 2
     factorial = []
-    while i*i <= n:
+    for i in range(2, int(n**0.5) + 1):
         while n % i == 0:
             factorial.append(i)
             n //= i
-        i += 1
 
     if n != 1:
         factorial.append(n)
@@ -280,13 +280,11 @@ def mod_log_fact_eratosthenes_sieve(n):
     # Finding the minimum prime factor for every number up to n
     # using Eratosthenes sieve in O(NloglogN) time.
     min_prime = [0] * (n+1)
-    i = 2
-    while i*i <= n:
+    for i in range(2, int(n**0.5) + 1):
         if min_prime[i] == 0:
             for j in range(i*i, n+1, i):
                 if min_prime[j] == 0:
                     min_prime[j] = i
-        i += 1
 
     for i in range(2, n+1):
         if min_prime[i] == 0:
@@ -305,10 +303,10 @@ def mod_log_fact_eratosthenes_sieve(n):
 # print(rec_exponentiate(5, 5))
 # print(euclidean_gcd(16, 10))
 # print(extended_euclidean(16, 10))
-# print(is_prime(11))
+# print(is_prime(49))
 # print(modular_inverse_fermat(5, 11))
 # print(modular_inverse_extended_euclidean(5, 11))
 # print(eratosthenes_sieve(20))
 # print(mod_sqrt_fact_eratosthenes_sieve(20))
 # print(mod_log_fact_eratosthenes_sieve(20))
-segment_eratosthenes_sieve(0, 20)
+# print(segment_eratosthenes_sieve(0, 20))
