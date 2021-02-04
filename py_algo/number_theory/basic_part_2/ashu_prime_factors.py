@@ -3,7 +3,8 @@ Codemonk link: https://www.hackerearth.com/practice/math/number-theory/basic-num
 
 Ashu is very fond of Prime numbers and he like challenging his friends by giving them various problems based on
 Mathematics and Prime number. One of his friend Harshit is jealous and challenges him to solve a task. Task is: Given a
-prime number X, you need to give the count of all numbers in range 1 to 106 inclusive which have minimum prime factor X.
+prime number X, you need to give the count of all numbers in range 1 to 10^6 inclusive which have minimum prime factor
+X.
 
 Input - Output:
 First line consist of numer of test cases T.
