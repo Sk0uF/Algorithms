@@ -195,7 +195,7 @@ def eratosthenes_sieve(n):
     That happens because a multiple of a prime number will
     always have 1, itself and the prime as a divisor (maybe
     even more) and thus, it's not a prime number. A common
-    rule for sieves is that they have O(logn) complexity.
+    rule for sieves is that they have O(logN) complexity.
     """
     primes = [True] * (n+1)
     primes[0] = False
