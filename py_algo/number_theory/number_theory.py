@@ -89,6 +89,8 @@ def euclidean_gcd(a, b):
     Euclidean algorithm to find the GCD of two
     numbers. It takes advantage of the property
     GCD(a, b) = GCD(b, a%b).
+
+    Cool property: GCD(a, b) * LCM(a, b) = a * b
     """
     if b == 0:
         return a
