@@ -247,7 +247,7 @@ def mod_sqrt_fact_eratosthenes_sieve(n):
     etc. All of these can be written as 2 * 2 * 5 though, which
     is unique. It becomes obvious that every non prime number
     can be written as the multiplication of primes. As already
-    states if n is non prime then there is a prime that divides
+    stated if n is non prime then there is a prime that divides
     it and p^2 <= n and that's the reason why we loop only up
     to sqrt(n). We basically find the minimum prime that divides
     our number. When we find it, we divide the number by that
