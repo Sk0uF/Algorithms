@@ -1,3 +1,8 @@
+"""
+More research and study needed to completely understand all the proofs, techniques and complexities.
+"""
+
+
 def modulo_properties():
     """
     Some properties of the modulo operation.
@@ -142,10 +147,6 @@ def is_prime(number):
     return True
 
 
-# More research needed to completely understand
-# the maths behind the multiplicative modular inverse,
-# the reasoning behind the Eratosthenes sieve complexity
-# as well as the Eratosthenes sieve complexity for segments.
 def modular_inverse_extended_euclidean(a, m):
     """
     Modular Inverse - Extended Euclidean
