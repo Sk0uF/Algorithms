@@ -119,7 +119,7 @@ def counting_sort(array):
 def radix_sort(array):
     """
     Radix Sort
-    Complexity: O((N + B) * log(max)
+    Complexity: O((N + B) * logb(max)
 
     Where B is the base for representing numbers and
     max is the maximum element of the input array. We
