@@ -174,8 +174,8 @@ def quick_sort(array, start, end):
     Most of the the times when using random pivot
     the complexity is O(NlogN). That is why we use
     the term "worst case complexity" O(N^2) and
-    average case complexity O(NlogN). Amortized
-    and average case are not the same.
+    "expected worst case complexity" O(NlogN). Amortized
+    and expected worst case complexity are not the same.
     """
     if start < end:
         pivot_pos = random.randint(start, end - 1)
