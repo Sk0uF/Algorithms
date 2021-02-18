@@ -38,7 +38,7 @@ def binary_search(array, element):
 def ternary_search(array, lower, upper):
     """
     Ternary Search
-    Complexity: O(log3/2(N))
+    Complexity: O(log3(N))
 
     Requires a unimodal array. That means
     that the array has to be increasing and then
@@ -65,7 +65,7 @@ def ternary_search(array, lower, upper):
 def ternary_search_func(x1, x2, c, precision, lower, upper):
     """
     Ternary Search
-    Complexity: O(log3/2(N/e)
+    Complexity: O(log3(N/e)
     Where e is the precision we want to achieve amd
     N is the range between between the lower and upper
     point. Basically, it's like having an array of length
