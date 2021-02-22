@@ -1,5 +1,5 @@
 """
-Monk created a NxM array and defined 4 types of operations. 1) Add v1 to all elements of a row. 2) Update all elements
+Monk created an NxM array and defined 4 types of operations. 1) Add v1 to all elements of a row. 2) Update all elements
 of a row to v2. 3) Add v3 to all elements of a columns. 4) Update all elements of a column to v4. At any cell of the
 array, only 1 operation can be performed. Any operation can be performed any number of times. Monk wants us to find the
 summation of the elements of all cells of the array. We must always get the absolute value of the element of the cell.
