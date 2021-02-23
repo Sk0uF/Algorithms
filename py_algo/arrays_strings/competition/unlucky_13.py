@@ -180,4 +180,4 @@ Final complexity: O(logN)
 #
 #     a = ans(n-1, array1)                        # Do the matrix exponentiation.
 #     array3 = mult(a, array2)                    # Do the final multiplication of the equation.
-#     print((array3[0][0] + array3[1][0]) % mod)  # Add the happy and state states.
+#     print((array3[0][0] + array3[1][0]) % mod)  # Add the happy and sad states.

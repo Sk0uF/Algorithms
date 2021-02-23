@@ -48,7 +48,7 @@ for i in range(test_cases):
         tasks_bin.append(count)
 
     # Sort based on the first element of each sub-pair.
-    final = [x for _, x in sorted(zip(tasks_bin, tasks), key=lambda pair: pair[0])]
+    final = [x[1] for x in sorted(zip(tasks_bin, tasks), key=lambda pair: pair[0])]
     print(*final)
 
 # Faster approach, bin returns string

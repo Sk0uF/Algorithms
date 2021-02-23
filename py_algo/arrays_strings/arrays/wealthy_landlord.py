@@ -55,7 +55,7 @@ def rectangles():
     for _ in range(n):
         x1, y1, x2, y2, cost = map(int, input().rstrip().split())
         # By finding the min and max X and Y values we can reduce
-        # the armotized complexity to O(N*X*Y).
+        # the complexity to O(N*X*Y).
         min_x = min(min_x, x1)
         min_y = min(min_y, y1)
         max_x = max(max_x, x2)

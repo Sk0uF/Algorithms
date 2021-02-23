@@ -64,9 +64,7 @@ for i in range(1, N):
             similar = False
         eq = 1
 
-# This accounts for the case that only the last 2 indices were found similar.
-# The segment could be big, because there might were a lot of continues equal
-# elements before the last similarity of the last 2 indices.
+# This accounts in case of ending with similar elements.
 if similar:
     count += eq * (eq - 1) // 2
 

@@ -39,7 +39,7 @@ array A, so we only need to find how many times it's contained and we don't care
 remainder as in the previous example, we need to account for some more values. In the example, these values are the 5
 and 4, so the 4th and 5th index starting from 1. This means that by doing (Ri - remainder) % N, we can directly find the
 lower point of the query in the original array, and by doing Ri % N, we can find the upper point of the query in the 
-original array. There are three cases. In the first case uppe>=lower, so we add helper[upper] - helper[lower-1] to our
+original array. There are three cases. In the first case upper >=lower, so we add helper[upper] - helper[lower-1] to our
 sum. If any of these is 0, we add helper[upper], because that means that the lower bound begins from the first index.
 If lower>upper, we add helper[upper] plus helper[end] - helper[lower-1], meaning that from the lower index we reach the
 end of the array and then from the beginning we reach the upper bound. Some alternations of +-1 in the helper array 
@@ -54,7 +54,7 @@ Final complexity: O(2*N) => O(N)
 """
 
 
-def solve (A, R, L):
+def solve(A, R, L):
     partial_sums = []
     partial_sums.append(A[0])
     sums = []
