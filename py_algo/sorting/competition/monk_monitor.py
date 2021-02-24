@@ -28,9 +28,10 @@ Sample Output:
 Sort the heights. After that, we can find the the desired value in linear time. Start iterating from the smaller to the
 biggest height. Increase a counter when the height is the same. If it's not the same, the maximum difference of heights
 is the maximum between our current maximum and counter - minimum, where the minimum is the minimum between our current
-minimum number of heights and counter.
+minimum number of heights and counter. The problem can be of course solved if we find the frequency of occurrences for 
+all numbers and then find the max and min values and subtract them. That would be a bit slower though.
 
-Final complexity: O(N)
+Final complexity: O(NlogN + N)
 """
 
 inp_len = int(input())
@@ -60,9 +61,7 @@ for _ in range(inp_len):
             min_val = min(min_val, counter)
             counter = 1
 
-    # Account for the last heights, in case we
-    # ended with a height that was the same as
-    # the previous.
+    # Account for the last heights or height.
     if not first:
         max_val = max(max_val, counter - min_val)
 
