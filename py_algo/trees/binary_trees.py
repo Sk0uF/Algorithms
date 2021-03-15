@@ -125,6 +125,28 @@ def min_value_node(node):
 
 
 def remove(node, value):
+    """
+    Binary Search Tree delete
+    Complexity: O(HEIGHT)
+
+    For example, if the tree has only left or right children
+    the HEIGHT i N. When a binary tree is complete the HEIGHT is
+    logN. The implementation has 3 cases. The node to be deleted
+    has no child, one child or 2 children. In the first 2 cases we
+    can simply either delete the node or replace it with the its
+    child. We don't care if the child has children of its own since
+    that would mean that we would simply shift the whole structure
+    from that point one level without violating the BST rules. In the
+    third case we can do two things. First, replace tha value of the
+    node to be deleted with the smallest value from the right subtree.
+    If we do that, that value will still be largest than all the values
+    of the left subtree and also, the node that has this smallest value
+    will not have a left child because if it had, that child would have
+    a lower value. That means we can easily delete that node because it
+    will only have 1 child. The other thing we can do is find the node
+    with the highest value and replace that value to our current node
+    and then delete it. Think about it.
+    """
     if node is None:
         return node
 
