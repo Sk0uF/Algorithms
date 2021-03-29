@@ -73,7 +73,7 @@ def add(node, value):
     Complexity: O(HEIGHT)
 
     For example, if the tree has only left or right children
-    the HEIGHT i N. When a binary tree is complete the HEIGHT is
+    the HEIGHT is N. When a binary tree is complete the HEIGHT is
     logN. The implementation is simple. Check the needed value with
     the value of the node and decide to continue checking for a place
     to add the new node either left or right from the current node.
@@ -96,7 +96,7 @@ def find(node, value):
     Complexity: O(HEIGHT)
 
     For example, if the tree has only left or right children
-    the HEIGHT i N. When a binary tree is complete the HEIGHT is
+    the HEIGHT is N. When a binary tree is complete the HEIGHT is
     logN. The implementation is simple. Check the needed value with
     the value of the node and decide to continue checking either
     left or right.
