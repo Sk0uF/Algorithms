@@ -15,7 +15,7 @@ class Node:
 def pre_order_traversal(node):
     """
     DFS Traversal - Pre Order Traversal
-    Complexity: O(NODES)
+    Complexity: O(NODES+EDGES) => O(NODES+NODES-1) => O(NODES)
     """
     print(node.value)
     if node.left:
