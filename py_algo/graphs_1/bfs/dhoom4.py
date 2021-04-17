@@ -35,6 +35,7 @@ desired value.
 
 O(NODES+EDGES) for the BFS. 
 Can we be sure that the process will end though?
+Can we be sure for the number of NODES+EDGES?
 Maybe the complexity differs.
 
 Final complexity: Undetermined

@@ -1,3 +1,44 @@
+"""
+Codemonk link: https://www.hackerearth.com/practice/algorithms/graphs/breadth-first-search/practice-problems/algorithm/monk-and-the-islands/
+
+Monk visits the land of Islands. There are a total of N islands numbered from 1 to N. Some pairs of islands are
+connected to each other by Bidirectional bridges running over water. Monk hates to cross these bridges as they require a
+lot of efforts. He is standing at Island #1 and wants to reach the Island #N. Find the minimum the number of bridges
+that he shall have to cross, if he takes the optimal route.
+
+Input - Output:
+First line contains T. T testcases follow.
+First line of each test case contains two space-separated integers N, M.
+Each of the next M lines contains two space-separated integers X and Y,
+denoting that there is a bridge between Island X and Island Y.
+
+Sample input:
+2
+3 2
+1 2
+2 3
+4 4
+1 2
+2 3
+3 4
+4 2
+
+Sample Output:
+2
+2
+"""
+
+"""
+The answer to the problem is given by a simple BFS. We basically need to find the minimum amount of bridges we have to 
+cross to reach node N.
+
+O(NODES+EDGES) for the BFS. 
+
+Final complexity: O(NODES+EDGES)
+"""
+
+
+# Hardcore BFS, we create the queue ourselves.
 def bfs(array, goal):
     start = 0
     end = 1
@@ -17,6 +58,8 @@ def bfs(array, goal):
 
     return visited[goal]
 
+
+# Easy BFS, we use a ready to go queue.
 # from collections import deque
 # def bfs(array, goal):
 #     queue = deque()
