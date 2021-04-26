@@ -7,13 +7,8 @@
 # 5 8
 # 4 8
 def find_root_and_balance(array, value):
-    # if array[value] != value:
-    #     array[value] = find_root_and_balance(array, array[value])
-    # return array[value]
-
-    while array[value] != value:
-        array[value] = array[array[value]]
-        value = array[value]
+    if array[value] != value:
+        array[value] = find_root_and_balance(array, array[value])
     return array[value]
 
 
