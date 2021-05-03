@@ -9,6 +9,7 @@ disjoint = [i for i in range(n)]
 sizes = [1] * n
 max_group = 1
 min_group = float('inf')
+steps = 0
 for _ in range(q):
     a, b = map(int, input().split())
     root_a = find_root_and_balance(disjoint, a-1)
@@ -18,14 +19,18 @@ for _ in range(q):
         if sizes[root_a] < sizes[root_b]:
             sizes[root_b] += sizes[root_a]
             max_group = max(max_group, sizes[root_b])
-            min_group = min(min_group, sizes[root_a])
+            min_group = max(min_group, sizes[root_b])
             disjoint[root_a] = disjoint[root_b]
         else:
             sizes[root_a] += sizes[root_b]
             disjoint[root_b] = disjoint[root_a]
             max_group = max(max_group, sizes[root_a])
-            min_group = min(min_group, sizes[root_b])
+            min_group = max(min_group, sizes[root_a])
+        steps += 1
     if max_group == n:
         print(0)
     else:
-        print(max_group-min_group)
+        if steps < n:
+            print(max_group-1)
+        else:
+            print(max_group-min_group)
