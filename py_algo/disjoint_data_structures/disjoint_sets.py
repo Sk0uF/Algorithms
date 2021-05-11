@@ -7,12 +7,25 @@
 # 5 8
 # 4 8
 def find_root_and_balance(array, value):
+    """
+    Find the root and balance
+    Complexity: O(logN)
+    """
     if array[value] != value:
         array[value] = find_root_and_balance(array, array[value])
     return array[value]
 
 
 def disjoint_sets_array(n, m):
+    """
+    Implementation of a disjoint set
+    Complexity: O(1) for union and O(logN) for find, inverse ackerman overall
+
+    By balancing each time we perform a find we achieve an overall complexity
+    (using both union and find) of inverse ackerman. One thing i wanted to add
+    is that before performing union we perform the find operation. If though the
+    we waste O(logN) time the union itself is performed in O(1) time.
+    """
     disjoint_set = [i for i in range(n)]
     sizes = [1] * n
     cycles = 0
