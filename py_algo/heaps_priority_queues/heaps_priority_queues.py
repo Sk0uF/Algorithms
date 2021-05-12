@@ -120,7 +120,19 @@ def heap_sort(array):
 
 
 temp_array = [3, 11, 2, 3, 123, 9544, 2, 75, 23, 93, 121, 114, 10, 42, 12, 3]
+temp_array_alt = [3, 11, 2, 3, 123, 9544, 2, 75, 23, 93, 121, 114, 10, 42, 12, 3]
 print(heap_sort(temp_array))
+
+
+# We can also use Python's build in heapq library to achieve the exact same goal.
+import heapq
+# heapq.heapify(temp_array_alt)      # For min heap.
+heapq._heapify_max(temp_array_alt)   # For max heap.
+heapq_sorted = []
+for i in range(len(temp_array_alt)):
+    heapq_sorted.append(heapq._heappop_max(temp_array_alt))
+
+print(heapq_sorted)
 
 
 def priority_queue():
