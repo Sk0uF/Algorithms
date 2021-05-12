@@ -233,13 +233,15 @@ def heapify_or_delete(array, n, i):
     max_element = array[i]
     max_element_index = i
 
-    if left_child < n and max_element < array[left_child]:
-        max_element = array[left_child]
-        max_element_index = left_child
+    if left_child < n:
+        if max_element < array[left_child]:
+            max_element = array[left_child]
+            max_element_index = left_child
 
-    if right_child < n and max_element < array[right_child]:
-        max_element = array[right_child]
-        max_element_index = right_child
+    if right_child < n:
+        if max_element < array[right_child]:
+            max_element = array[right_child]
+            max_element_index = right_child
 
     if max_element_index != i:
         array[i], array[max_element_index] = array[max_element_index], array[i]
