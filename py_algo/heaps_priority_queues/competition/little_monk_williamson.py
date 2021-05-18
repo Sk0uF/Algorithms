@@ -1,4 +1,62 @@
-# https://www.hackerearth.com/problem/algorithm/little-monk-and-williamson-af8a2022/
+"""
+Codemonk link: https://www.hackerearth.com/problem/algorithm/little-monk-and-williamson-af8a2022/
+
+Little Monk is a huge cricket fan, so he decides that he'll meet his five favorite cricketers in this problem-set of
+heaps. And he'll try to impress them. The first cricketer he wants to impress is: Kane Williamson. He asked Kane to
+answer some queries in a press interview. Kane is irritated by Little Monk's constant interruption during his interview,
+so he decides to give Monk a run for his money by asking him the answer to various queries. Williamson will give a query
+of the types mentioned below, to the Monk and will expect him to answer those.
+Push X    -- Insert Williamson's score in an array. - Query type 1.
+Diff      -- Find out the difference between Willamson's current highest and current lowest score, currently present in
+             the array. And then remove a singular instance of those values from the array. In case the current lowest
+             and current highest score are same, then only one instance of that score will be removed from the array.
+CountHigh -- Find out the number of times Williamson has scored his current highest score, currently present in array.
+CountLow  -- Find out the number of times Williamson has scored his current lowest score, currently present in array.
+
+Input - Output:
+The first line contains an integer Q, which denotes the number of queries which have to be dealt by The Monk.
+The next Q lines will contain a query like the ones mentioned above.
+For the query type 2, 3, and 4, print the answer in a new line. If there is no record of any innings,
+that is, the array of Williamson's score is empty for query type 2, 3 and 4, then print 1.
+
+Sample input:
+10
+CountHigh
+Push 442
+CountHigh
+Push 7555
+Diff
+Push 2799
+Diff
+Push 8543
+Diff
+Diff
+
+Sample Output:
+-1
+1
+7113
+0
+0
+-1
+"""
+
+"""
+We create a min and max heap to maintain the smallest and biggest values. The real question is how to perform the Diff
+query. After we find the difference we have to remove the max and min values from BOTH heaps. It's easy to remove the 
+max value from the max heap and easy to remove the min value from the min heap but not that straightforward when it
+comes to removing the min value from the max the heap and the max value from the min heap. We have to think smart. Lets
+take for example the max heap. At an instance, we remove the max value and have to remove the min value as well.
+We don't need to do it right away though! Why remove it if it's not the root value? We are only going to remove it if
+its frequency of occurencies in the max heap is bigger than the frequency of occurencies in the min heap because that
+would mean that in some point we removed that value from the min heap. So, while it's the root value and the frequency
+is bigger then keep deleting from the heap! This has an overall amortized complexity of O(N*logN) (i am not sure though)
+and the same holds for the min heap.
+
+Final complexity: O(Q*logN)
+"""
+
+
 def add_to_heap(array, i, heap_type):
     if i % 2 == 0:
         parent = i//2 - 1
@@ -104,6 +162,5 @@ for _ in range(q):
                         delete_from_heap(min_heap, "min")
                         if len(min_heap) == 0:
                             break
-
             else:
                 print(-1)
