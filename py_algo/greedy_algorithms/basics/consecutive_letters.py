@@ -26,7 +26,7 @@ ababa
 """
 Very easy problem. Think about it.
 
-Final complexity: O(t*S)
+Final complexity: O(T*S)
 """
 
 t = int(input())
