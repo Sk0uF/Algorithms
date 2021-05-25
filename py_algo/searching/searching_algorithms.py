@@ -35,7 +35,7 @@ def binary_search(array, element):
     return -1
 
 
-def ternary_search(array, lower, upper):
+def ternary_search(array):
     """
     Ternary Search
     Complexity: O(log3(N))
@@ -47,15 +47,16 @@ def ternary_search(array, lower, upper):
     modifications needed to work with descending
     and then ascending order as well.
     """
+    lower = 0
+    upper = len(array) - 1
+    while lower < upper:
+        first_third = lower + (upper - lower) // 3
+        second_third = upper - (upper - lower) // 3
 
-    if lower < upper:
-        first_third = lower + (upper-lower)//3
-        second_third = upper - (upper-lower)//3
-
-        if array[first_third] > array[second_third]:
-            return ternary_search(array, lower, second_third - 1)
+        if array[first_third] < array[second_third]:
+            lower = first_third+1
         else:
-            return ternary_search(array, first_third + 1, upper)
+            upper = second_third-1
 
     # We can return either lower or upper. That happens
     # because the code is going to stop when lower = upper.
@@ -66,7 +67,7 @@ def ternary_search_func(x1, x2, c, precision, lower, upper):
     """
     Ternary Search
     Complexity: O(log3(N/e)
-    Where e is the precision we want to achieve amd
+    Where e is the precision we want to achieve and
     N is the range between between the lower and upper
     point. Basically, it's like having an array of length
     N/e.
@@ -96,5 +97,5 @@ def ternary_helper(x, x1, x2, c):
 
 
 temp_array = [1, 2, 5, 8, 10, 80, 79, 3, 1]
-print(ternary_search(temp_array, 0, len(temp_array) - 1))
+print(ternary_search(temp_array))
 print(ternary_search_func(-1, 2, 3, 0.000000001, 0, 1))
