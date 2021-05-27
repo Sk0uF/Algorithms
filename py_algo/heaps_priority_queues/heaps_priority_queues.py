@@ -57,7 +57,7 @@ def heapify(array, i):
     Complexity: O(1)
 
     The code here is almost the same as with the delete_from_heap function. We get O(1) because we use it in a specific
-    way. See the create_heap_heapify to underdtand it.
+    way. See the create_heap_heapify to understand it.
     """
     left_child = 2*i + 1
     right_child = 2*i + 2
