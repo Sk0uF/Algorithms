@@ -1,7 +1,7 @@
 # Algorithms
 
 This repo contains solutions for many practice problems from hackerearth as well as the Codemonk challenge.
-The project is still ONGOING and some explanations (method, complexities etc) may be not be clear or 100% correct.
+The project is still **ONGOING** and some explanations (methods, complexities etc.) may be not be clear or 100% correct.
 
 
 ## Instructions
