@@ -53,3 +53,100 @@ for _ in range(e):
     graph.append((w, x, y))
 
 print(kruskal(graph, v, e))
+
+
+def prim():
+    """
+    Prim's Algorithm for MST
+
+    Works better than Kruskal's only in Dense graphs.
+    """
+    pass
+
+
+# 5 5
+# 1 2 5
+# 1 3 2
+# 3 4 1
+# 1 4 6
+# 3 5 5
+import heapq
+
+
+def dijkstra(graph):
+    """
+    Dijkstra's Algorithm for Shortest Path
+    Complexity: O(V + E*logV)
+
+    We use a min heap as the priority queue.
+    """
+    visited = [False] * len(graph)
+    distances = [float("inf")] * len(graph)
+    distances[0] = 0
+    priority_queue = []
+    heapq.heappush(priority_queue, (0, 0))
+    while priority_queue:
+        min_vert = heapq.heappop(priority_queue)
+        vert = min_vert[1]
+        if visited[vert]:
+            continue
+
+        visited[vert] = True
+        for i in range(len(graph[vert])):
+            next_vert = graph[vert][i][0]-1
+            next_weight = graph[vert][i][1]
+            if distances[vert] + next_weight < distances[next_vert]:
+                distances[next_vert] = distances[vert] + next_weight
+                heapq.heappush(priority_queue, (distances[next_vert], next_vert))
+
+    return distances
+
+
+n, m = map(int, input().split())
+graph = [[-1] for _ in range(n)]
+for _ in range(m):
+    a, b, w = map(int, input().split())
+    if graph[a-1][0] == -1:
+        graph[a-1][0] = (b, w)
+    else:
+        graph[a-1].append((b, w))
+
+    if graph[b-1][0] == -1:
+        graph[b-1][0] = (a, w)
+    else:
+        graph[b-1].append((a, w))
+
+print(*dijkstra(graph)[1:])
+
+
+def warshall(graph):
+    """
+    Warshall's Algorithm for Shortest Path
+    Complexity: O(V^3)
+
+    It produces the shortest paths between all the vertices.
+    """
+    for k in range(len(graph)):
+        for i in range(len(graph)):
+            for j in range(len(graph)):
+                graph[i][j] = min(graph[i][j], graph[i][k] + graph[k][j])
+
+    return graph
+
+
+n, m = map(int, input().split())
+graph = []
+for i in range(n):
+    temp = []
+    for j in range(n):
+        if j == i:
+            temp.append(0)
+        else:
+            temp.append(float("inf"))
+    graph.append(temp)
+
+for _ in range(m):
+    a, b, w = map(int, input().split())
+    graph[a-1][b-1] = w
+
+print(warshall(graph))
