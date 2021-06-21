@@ -178,3 +178,75 @@ for _ in range(m):
     graph[a-1][b-1] = w
 
 print(warshall(graph))
+
+
+"""
+Topological Sort Algorithms
+"""
+from collections import deque
+
+
+def kahn(graph):
+    """
+    Kahn's Algorithm
+    Complexity: O(V+E)
+
+    It basically is like a BFS with a twist of finding the
+    degree of every vertex in the beginning.
+    """
+
+    visited = [False] * len(graph)
+    degree = [0] * len(graph)
+    queue = deque()
+    for i in range(len(graph)):
+        for j in range(len(graph[i])):
+            if graph[i][j] != -1:
+                degree[graph[i][j]] += 1
+
+    for i in range(len(graph)):
+        if degree[i] == 0:
+            queue.append(i)
+            visited[i] = True
+
+    while queue:
+        current = queue.popleft()
+        final.append(current+1)
+        for i in range(len(graph[current])):
+            if not visited[graph[current][i]] and graph[current][i] != -1:
+                degree[graph[current][i]] -= 1
+                if degree[graph[current][i]] == 0:
+                    queue.append(graph[current][i])
+                    visited[graph[current][i]] = True
+
+
+def dfs_rec(graph, begin, visited):
+    """
+    Depth First Search - Recursive
+    Complexity: O(V+Q) => O(V+2*E) => O(V+E)
+
+    Where V are the vertices and Q the sum of the degrees of all nodes.
+    For undirected graphs. It can obviously work with minor adjustments
+    for directed graphs as well.
+    """
+    print("Node: " + str(begin))
+    visited[begin] = True  # We can also use a set.
+    for i in range(len(graph[begin])):
+        if not visited[graph[begin][i]] and graph[begin][i] != -1:
+            dfs_rec(graph, graph[begin][i], visited)
+    final.append(begin+1)  # That's the only extra step we need.
+
+
+n, m = map(int, input().split())
+graph = [[-1] for _ in range(n)]
+final = []
+for _ in range(m):
+    a, b = map(int, input().split())
+    if graph[a-1][0] == -1:
+        graph[a-1][0] = b-1
+    else:
+        graph[a-1].append(b-1)
+
+
+# dfs_rec(graph, 0, [False] * n)
+kahn(graph)
+print(*final)
