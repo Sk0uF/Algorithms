@@ -1,9 +1,14 @@
+"""
+MST Algorithms
+"""
+
 # 4 5
 # 1 2 7
 # 1 4 6
 # 4 2 9
 # 4 3 8
 # 2 3 6
+
 
 def find_root(array, value):
     """
@@ -64,6 +69,9 @@ def prim():
     pass
 
 
+"""
+Shortest Path Algorithms
+"""
 # 5 5
 # 1 2 5
 # 1 3 2
@@ -117,6 +125,26 @@ for _ in range(m):
         graph[b-1].append((a, w))
 
 print(*dijkstra(graph)[1:])
+
+
+def bellman(graph):
+    distances = [float("inf")] * len(graph)
+    distances[0] = 0
+    for _ in range(len(graph)):
+        for i in range(len(graph)):
+            if distances[graph[i][0]-1] + graph[i][2] < distances[graph[i][1]-1]:
+                distances[graph[i][1]-1] = distances[graph[i][0]-1] + graph[i][2]
+
+    return distances
+
+
+n, m = map(int, input().split())
+graph = []
+for _ in range(m):
+    a, b, w = map(int, input().split())
+    graph.append((a, b, w))
+
+print(*bellman(graph)[1:])
 
 
 def warshall(graph):
