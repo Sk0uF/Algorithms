@@ -125,12 +125,12 @@ print(heap_sort(temp_array))
 
 
 # We can also use Python's build in heapq library to achieve the exact same goal.
+# The following is for min heap. For max heap we use the same but with negative values.
 import heapq
-# heapq.heapify(temp_array_alt)      # For min heap.
-heapq._heapify_max(temp_array_alt)   # For max heap.
+heapq.heapify(temp_array_alt)
 heapq_sorted = []
 for i in range(len(temp_array_alt)):
-    heapq_sorted.append(heapq._heappop_max(temp_array_alt))
+    heapq_sorted.append(heapq.heappop(temp_array_alt))
 
 print(heapq_sorted)
 
@@ -142,6 +142,26 @@ def priority_queue():
     Max and min heaps are priority queues. We can implement another type of
     priority queues by using max and min heaps. The only thing we have to do
     is create the heap with the priority we are given. That way we can maintain
-    the nice complexity time of max or min heaps.
+    the nice complexity time of max or min heaps. To do that, we can we use our
+    own implementation or use the build in heapq with a class representing the
+    heap's elements, with an __lt__(self, other) function inside that decides
+    the priority. Otherwise, if we just want a simple priority with one comparison
+    but with some other values stored as well, we can use a tuple with the first
+    value being the value we are going to compare with.
     """
-    pass
+    class PriorityElement:
+        def __init__(self, value, weight):
+            self.value = value
+            self.weight = weight
+
+        def __lt__(self, other):
+            return self.weight < other.weight
+
+    # The following will produce the exact same results
+    priority_1 = []
+    priority_2 = []
+    heapq.heappush(priority_1, PriorityElement(0, 15))
+    heapq.heappush(priority_1, PriorityElement(0, 6))
+
+    heapq.heappush(priority_2, (0, 15))
+    heapq.heappush(priority_2, (0, 6))

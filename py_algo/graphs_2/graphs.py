@@ -84,9 +84,11 @@ import heapq
 def dijkstra(graph):
     """
     Dijkstra's Algorithm for Shortest Path
-    Complexity: O(V + E*logV)
+    Complexity: O(V + E*logE) or O(E*logE) or O(E*logV)
+                because E <= V*(V-1)/2 or E <= V*(V-1)
 
-    We use a min heap as the priority queue.
+    We use a min heap as the priority queue. The O(V) int the coplexity
+    comes from the initialization of distances.
     """
     visited = [False] * len(graph)
     distances = [float("inf")] * len(graph)
