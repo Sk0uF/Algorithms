@@ -130,6 +130,10 @@ print(*dijkstra(graph)[1:])
 
 
 def bellman(graph):
+    """
+    Bellmans's Algorithm for Shortest Path
+    Complexity: O(V * E)
+    """
     distances = [float("inf")] * len(graph)
     distances[0] = 0
     for _ in range(len(graph)):
