@@ -1,4 +1,27 @@
-# https://www.hackerearth.com/practice/algorithms/dynamic-programming/introduction-to-dynamic-programming-1/practice-problems/algorithm/jump-k-forward-250d464b/
+"""
+Codemonk link: https://www.hackerearth.com/practice/algorithms/dynamic-programming/introduction-to-dynamic-programming-1/practice-problems/algorithm/jump-k-forward-250d464b/
+
+There are n stones in a row from left to right. You are standing on the first stone. From every step from stone number i
+you can jump at most k stones further. You cannot jump over stone number n. How many ways are there to travel to stone
+number n?
+
+Input - Output:
+First line contains n and k.
+Output the answer modulo 10^9 + 7.
+
+Sample input:
+5 2
+
+Sample Output:
+5
+"""
+
+"""
+We can simply find the partial sums array, iterate throught the array end at each step check for the minimum X number 
+that is required.
+
+Final complexity: O(N)
+"""
 
 # O(N)
 modulo = 1000000007
