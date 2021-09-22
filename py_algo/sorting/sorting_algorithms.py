@@ -51,37 +51,36 @@ def merge_sort(array):
     Merge Sort
     Complexity: O(NlogN)
     """
-    if len(array) > 1:
-        m = len(array) // 2
-        left = array[:m]
-        right = array[m:]
 
+    if len(array) > 1:
+        mid = len(array) // 2
+        left = array[:mid]
+        right = array[mid:]
         left = merge_sort(left)
         right = merge_sort(right)
         array = []
 
-        # Each time, we compare the first elements of each array, for example
-        # if left = [3, 6, 11] and right = [4, 5, 10] we compare 3 with 4,
-        # 3 is smaller so the array becomes [3] and we pop the 3 from left.
-        # Now, left becomes [6, 11], we compare 6 with 4 and the array becomes
-        # [3, 4] and we pop the 4 from right, so right becomes [5, 10].
-        # The same procedure continues and array finally becomes
-        # [3, 4, 5, 6, 10]. We have some values left on the right array, so
-        # in the end, we add them and the array becomes [3, 4, 5, 6, 10, 11].
-        # If more values than 1 are left on an array, we can be sure that they
-        # are ordered correctly because the array was ordered in the previous.
-        while len(left) > 0 and len(right) > 0:
-            if left[0] < right[0]:
-                array.append(left[0])
-                left.pop(0)
+        # This is a queue implementation. We can also use
+        # a deque but slicing it needs the itertools slice
+        # function which I didn't want to use. More on that
+        # in the stacks and queues chapter.
+        l1 = l2 = 0
+        while len(left) > l1 and len(right) > l2:
+            if left[l1] < right[l2]:
+                array.append(left[l1])
+                l1 += 1
             else:
-                array.append(right[0])
-                right.pop(0)
+                array.append(right[l2])
+                l2 += 1
 
-        for i in left:
-            array.append(i)
-        for i in right:
-            array.append(i)
+        while len(left) > l1:
+            array.append(left[l1])
+            l1 += 1
+
+        while len(right) > l2:
+            array.append(right[l2])
+            l2 += 1
+
     return array
 
 
