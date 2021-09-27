@@ -3,7 +3,8 @@ Graphs part 1
 
 - A connected graph has EDGES >= NODES - 1 and a graph without cycles has EDGES <= NODES - 1. That's also called a tree.
 - The total paths on a tree are NODES*(NODES-1)/2.
-- Based on handshaking lemma, the sum of the degrees of all the VERTICES (or else NODES) is equal to 2*EDGES.
+- Based on handshaking lemma, in an undirected graph, the sum of the degrees of all the VERTICES (or else NODES) is
+  equal to 2*EDGES.
 - There are a maximum of NODES*(NODES-1) edges in a directed graph and half in an undirected.
 - Therefore, EDGES <= NODES^2.
 - We represent a graph with an ADJACENCY LIST or an ADJACENCY MATRIX. The former is much better than the latter.
